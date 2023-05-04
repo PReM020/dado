@@ -1,0 +1,66 @@
+<!Doctype html>
+<html lang="en">
+<head> <meta charset="UTF-8">
+<meta name="author" content="S. García" />
+<meta name="description" content="Ejercicio 1 javascript Tema 2" />
+<meta name="keywords" content="HTML" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Dado de 20</title>
+    <style>
+      /* Estilos para el botón */
+      #roll-dice {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      /* Estilos para el resultado */
+      #result {
+        font-size: 3em;
+        text-align: center;
+        background-color: rgb(255, 255, 255);
+      }
+    </style>
+  </head>
+  <body>
+    <button id="roll-dice">Lanzar dado</button>
+    <div id="result"></div>
+    <script>
+      //Función para lanzar el dado
+      function lanzarDado() {
+        return Math.floor(Math.random() * 20) + 1;
+      }
+      //Función para generar un color aleatorio
+      function randomColor() {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      }
+      
+      //Seleccionar el botón y asignar un evento al presionarlo
+      const rollDiceButton = document.getElementById("roll-dice");
+      rollDiceButton.addEventListener("click", function() {
+        //Lanzar el dado y guardar el resultado
+        const resultado = lanzarDado();
+        
+        //Seleccionar la sección donde se mostrará el resultado
+        const resultSection = document.getElementById("result");
+        
+        //Mostrar el resultado en pantalla
+        resultSection.innerHTML = resultado;
+        
+        //Cambiar el fondo de la página y el color del número
+        document.body.style.backgroundColor = randomColor();
+        resultSection.style.color = randomColor();
+        
+        //Cambiar el color del botón
+        rollDiceButton.style.backgroundColor = randomColor();
+      });
+    </script>
+  </body>
+</html>
+
+
